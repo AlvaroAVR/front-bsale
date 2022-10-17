@@ -1,6 +1,7 @@
 const items = document.getElementById('items')
 const btnBuscar = document.querySelector('.buscar')
 const inputBuscador = document.querySelector('.inputBuscador')
+const inputTexto = document.getElementById('textoBuscado')
 
 let buscado = 'todos'
 
@@ -12,6 +13,14 @@ btnBuscar.addEventListener('click', (e) => {
     e.preventDefault()
     buscado = 'buscar?query='+ inputBuscador.value
     fetchData()
+})
+
+inputTexto.addEventListener('keyup', (e) => {
+    if(e.keyCode === 13){
+        e.preventDefault()
+        buscado = 'buscar?query='+ inputBuscador.value
+        fetchData()
+    }
 })
 
 const fetchData = async () => {
